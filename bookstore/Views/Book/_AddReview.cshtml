@@ -1,0 +1,117 @@
+﻿@model bookstore.Models.ReviewModel
+
+
+
+<style>
+    .rating {
+        width: 200px;
+        unicode-bidi: bidi-override;
+        direction: rtl;
+        text-align: center;
+        position: relative;
+        font-size: 35px;
+    }
+
+        .rating > label {
+            float: right;
+            display: inline;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            width: 1.1em;
+            cursor: pointer;
+            color: #000;
+        }
+
+            .rating > label:hover,
+            .rating > label:hover ~ label,
+            .rating > input.radio-btn:checked ~ label {
+                color: transparent;
+            }
+
+                .rating > label:hover:before,
+                .rating > label:hover ~ label:before,
+                .rating > input.radio-btn:checked ~ label:before,
+                .rating > input.radio-btn:checked ~ label:before {
+                    content: "\2605";
+                    position: absolute;
+                    left: 0;
+                    color: #1E90FF;
+                }
+</style>
+
+
+
+
+
+
+<!--  Add a comment -->
+<div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
+    <h5 class="mb-4">Write a Review</h5>
+    <p class="mb-2">Rate the Book</p>
+  
+
+    <form asp-controller="Review" asp-action="Create" asp-route-id="@Model.Id">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-4">
+
+            <div class="form-group">
+                <input asp-for="ItemId" class="form-control" type="hidden" />
+                <span asp-validation-for="ItemId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input asp-for="UserId" class="form-control" type="hidden" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input asp-for="Created" class="form-control" type="hidden" />
+                <span asp-validation-for="Created" class="text-danger"></span>
+            </div>
+
+            <div class="rating">
+                <input asp-for="Rating" id="star5" type="radio" value=5 class="radio-btn hide" />
+                <label for="star5">☆</label>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+                
+                <input asp-for="Rating" id="star4" type="radio" value=4 class="radio-btn hide" />
+                <label for="star4">☆</label>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+                
+                <input asp-for="Rating" id="star3" type="radio" value=3 class="radio-btn hide" />
+                <label for="star3">☆</label>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+                
+                <input asp-for="Rating" id="star2" type="radio" value=2 class="radio-btn hide" />
+                <label for="star2">☆</label>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+                
+                <input asp-for="Rating" id="star1" type="radio" value=1 class="radio-btn hide" />
+                <label for="star1">☆</label>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label"> Name </label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Review</label>
+            <textarea asp-for="Review" class="form-control"></textarea>
+            <span asp-validation-for="Review" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary " />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

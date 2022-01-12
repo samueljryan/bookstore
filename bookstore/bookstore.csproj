@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-bookstore-34B84469-3CAC-4B27-9473-AE007B25F759</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\NewFolder1\**" />
+    <Content Remove="wwwroot\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder1\**" />
+    <None Remove="wwwroot\NewFolder1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20211210232915_initialsetup.cs" />
+    <Compile Remove="Data\Migrations\20211210232915_initialsetup.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211212020146_addedGenre.cs" />
+    <Compile Remove="Data\Migrations\20211212020146_addedGenre.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211212020957_addedGenre.cs" />
+    <Compile Remove="Data\Migrations\20211212020957_addedGenre.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211212023905_addedtitle.cs" />
+    <Compile Remove="Data\Migrations\20211212023905_addedtitle.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211213152055_UpdatedSchema.cs" />
+    <Compile Remove="Data\Migrations\20211213152055_UpdatedSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211213154917_addedImageModel.cs" />
+    <Compile Remove="Data\Migrations\20211213154917_addedImageModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211213215146_alteredImageModel.cs" />
+    <Compile Remove="Data\Migrations\20211213215146_alteredImageModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211214004144_changedForeignKey.cs" />
+    <Compile Remove="Data\Migrations\20211214004144_changedForeignKey.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211214004754_bookidToList.cs" />
+    <Compile Remove="Data\Migrations\20211214004754_bookidToList.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211214220627_addedforeignkey.cs" />
+    <Compile Remove="Data\Migrations\20211214220627_addedforeignkey.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211215021812_removedforeignkey.cs" />
+    <Compile Remove="Data\Migrations\20211215021812_removedforeignkey.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211215204457_changedReview.cs" />
+    <Compile Remove="Data\Migrations\20211215204457_changedReview.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211220213056_cartSession.cs" />
+    <Compile Remove="Data\Migrations\20211220213056_cartSession.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.0.0" />
+    <PackageReference Include="Azure.Identity" Version="1.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.20" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.20" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.20" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Stripe.net" Version="39.84.0" />
+  </ItemGroup>
+
+</Project>

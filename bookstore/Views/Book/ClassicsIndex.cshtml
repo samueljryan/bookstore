@@ -1,0 +1,76 @@
+﻿@model IEnumerable<bookstore.Models.BookModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Upload New Book</a>
+    </p>
+
+}
+
+
+
+<body>
+
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Classics</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Stories That Have Stood the Test of Time</p>
+            </div>
+        </div>
+    </header>
+    <!-- Section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <a asp-action="Details" asp-route-id="@item.Id">  <img src="@("~/Image/"+item.ImageName)" asp-append-version="true" width="262" height="328" />   </a>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Book Title -->
+                                    <h4> <a asp-action="Details" asp-route-id="@item.Id">  @Html.DisplayFor(modelItem => item.Title) </a></h4>
+                                    <!-- Book Author-->
+                                    <h6> @Html.DisplayFor(modelItem => item.AuthorName)</h6>
+                                    <!-- Book price-->
+                                    $@Html.DisplayFor(modelItem => item.Price)
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                    <a class="btn btn-outline-dark mt-auto" asp-controller="Cart" asp-action="AddtoCartClassic" asp-route-id="@item.Id">Add to Cart</a>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <a class="btn btn-outline-dark mt-auto" asp-action="Edit" asp-route-id="@item.Id">| Edit |</a>
+                                        <a class="btn btn-outline-dark mt-auto" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </section>
+
+</body>
+
+

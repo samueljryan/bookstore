@@ -1,0 +1,59 @@
+﻿@model IEnumerable<bookstore.Models.BookModel>
+
+@{
+    ViewData["Title"] = "Wishlist";
+}
+
+
+
+<h1>Wishlist</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <img src="@("~/Image/"+item.ImageName)" asp-append-version="true" width="145" height="160" />
+                </td>
+                <td> <a class="btn btn-outline-dark flex-shrink-0" asp-controller="Cart" asp-action="AddtoCartFromWish" asp-route-id="@item.Id"><i class="bi-cart-fill me-1"></i>Add to Cart</a></td>
+                <td>
+                    <a asp-controller="WishList" asp-action="RemoveFromwishlist" asp-route-id="@item.Id">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+<br />
+
+<a asp-controller="WishList" asp-action="ClearWishlist" >Clear Wishlist</a>

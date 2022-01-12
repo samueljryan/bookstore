@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<body>
+
+    <!-- Page Content
+    <div class="container px-4 px-lg-5">
+        <!-- Heading Row
+        <div style="text-align: center">
+
+            <h1 class="font-weight-light">Libros: Online Book Store</h1>
+            <p>All the greatest books at a competitive price</p>
+
+            <div><img class="img-fluid rounded mb-4 mb-lg-0" src="@("~/Image/bookstore.jpg")" asp-append-version="true" width="900" height="400" /></div>
+        </div>
+    </div>
+   -->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Libros: Online Book Store</h1>
+                <p class="lead fw-normal text-white-50 mb-0">All the greatest books at a competitve price</p>
+                <br />
+                <div><img class="img-fluid rounded mb-4 mb-lg-0" src="@("~/Image/bookstore.jpg")" asp-append-version="true" width="900" height="400" /></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Call to Action-->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><h3 class="text-white m-0">Our Favorite Books</h3></div>
+    </div>
+    <!-- Content Row-->
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+            @foreach (var item in ViewBag.OurPicks)
+            {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <a asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">  <img src="@("~/Image/"+item.ImageName)" asp-append-version="true" width="262" height="328" />   </a>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Book Title -->
+                                <h4> <a asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">  @item.Title </a></h4>
+                                <!-- Book Author-->
+                                <h6> @item.AuthorName</h6>
+                                <!-- Book price-->
+                                $@item.Price
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" asp-controller="Cart" asp-action="AddtoCartHome" asp-route-id="@item.Id">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+
+</body>
